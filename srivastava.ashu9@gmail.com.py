@@ -57,7 +57,9 @@ def get_prime_time(df):
                           .orderBy(desc("number_of_tkts_sold"), desc("movie_start_time")))
     )
     
-    return df_rank         .withColumn("is_prime_time", when(col("rank") == 1, "TRUE").otherwise("FALSE"))         .drop("rank")
+    return df_rank \         
+        .withColumn("is_prime_time", when(col("rank") == 1, "TRUE").otherwise("FALSE"))\
+            .drop("rank")
 
 
 # 
